@@ -26,10 +26,10 @@ public class PassingCalculatorTest {
                 Arrays.asList(70, 78, 82, 57, 74)
         );
 
-        HashMap<Subjects, Integer> gradeHashMap = new HashMap<>();
+        HashMap<Integer, Integer> gradeHashMap = new HashMap<>();
 
         for (int i = 0; i < grades.size(); i++)
-            gradeHashMap.put(Subjects.values()[i], grades.get(i));
+            gradeHashMap.put(i, grades.get(i));
 
         Student s = new Student(abbreviation, gradeHashMap);
 
@@ -43,10 +43,10 @@ public class PassingCalculatorTest {
                 Arrays.asList(0, 0, 0, 0, 0)
         );
 
-        HashMap<Subjects, Integer> gradeHashMap = new HashMap<>();
+        HashMap<Integer, Integer> gradeHashMap = new HashMap<>();
 
         for (int i = 0; i < failing_grades.size(); i++)
-            gradeHashMap.put(Subjects.values()[i], failing_grades.get(i));
+            gradeHashMap.put(i, failing_grades.get(i));
 
         Student s = new Student(abbreviation, gradeHashMap);
 
@@ -60,10 +60,10 @@ public class PassingCalculatorTest {
                 Arrays.asList(70, 78, 82, 57, 74)
         );
 
-        HashMap<Subjects, Integer> gradeHashMap = new HashMap<>();
+        HashMap<Integer, Integer> gradeHashMap = new HashMap<>();
 
-        grades.forEach(grade -> gradeHashMap.put(
-                Subjects.values()[grades.indexOf(grade)], grade));
+        for (int i = 0; i < grades.size(); i++)
+            gradeHashMap.put(i, grades.get(i));
 
         Student s = new Student(abbreviation, gradeHashMap);
 

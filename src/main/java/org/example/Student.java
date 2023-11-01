@@ -6,14 +6,10 @@ import java.util.List;
 
 public class Student {
     public final String majorAbbreviation;
-    public final HashMap<Subjects, Integer> subjectGrades;
+    public final HashMap<Integer, Integer> subjectGrades;
     public final Division studentDivision;
-    public Student(String majorAbbreviation, HashMap<Subjects, Integer> subjectGrades){
+    public Student(String majorAbbreviation, HashMap<Integer, Integer> subjectGrades){
         this.majorAbbreviation = majorAbbreviation;
-
-        if(subjectGrades.size() < Subjects.values().length)
-            throw new IllegalArgumentException("This student is missing certain subject grades");
-
         this.subjectGrades = subjectGrades;
 
         List<Division> divisionList = Arrays.stream(Division.values()).toList();
@@ -37,8 +33,8 @@ public class Student {
     public int studentMajorGrade(){
 
         int sum = 0;
-        for(Subjects subject : this.studentDivision.divisionSubjects){
-            sum += this.subjectGrades.get(subject);
+        for(SubjectPositions subject : this.studentDivision.divisionSubjectsPositions){
+            sum += this.subjectGrades.get(subject.position);
         }
 
         return sum;

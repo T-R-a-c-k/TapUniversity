@@ -6,22 +6,22 @@ import java.util.Arrays;
 public enum Division {
     Science("s",
             new ArrayList<>(
-                    Arrays.asList(Subjects.Math, Subjects.Science)
+                    Arrays.asList(SubjectPositions.Math, SubjectPositions.Science)
             ),
             160),
     Humanity("l",
             new ArrayList<>(
-                    Arrays.asList(Subjects.Japanese, Subjects.Geography)
+                    Arrays.asList(SubjectPositions.Japanese, SubjectPositions.Geography)
             ),
             160);
 
     public final String divisionAbbreviation;
-    public final ArrayList<Subjects> divisionSubjects;
+    public final ArrayList<SubjectPositions> divisionSubjectsPositions;
     public final int divisionPassingGrade;
 
-    Division(String divisionAbbreviation, ArrayList<Subjects> divisionSubjects, int divisionPassingGrade) {
+    Division(String divisionAbbreviation, ArrayList<SubjectPositions> divisionSubjects, int divisionPassingGrade) {
         this.divisionAbbreviation = divisionAbbreviation;
-        this.divisionSubjects = divisionSubjects;
+        this.divisionSubjectsPositions = divisionSubjects;
         this.divisionPassingGrade = divisionPassingGrade;
     }
 }

@@ -9,6 +9,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InputUtil {
+
+    private static void ensureSameNumberOfGrades(List<Student> students){
+        if(students.stream()
+                .anyMatch(student -> student.subjectGrades.size() != students.get(0).subjectGrades.size())){
+            throw new IllegalArgumentException("At least one student is missing grades.");
+        }
+    }
     private static Student stringToStudent(String current){
         int abbreviationAndSpace = 2;
         if(current.length() < abbreviationAndSpace)
@@ -19,10 +26,10 @@ public class InputUtil {
         List<String> studentGradesString = Arrays.asList(newCurrent.split(" "));
         List<Integer> studentGradesInt = studentGradesString.stream().mapToInt(Integer::parseInt).boxed().toList();
 
-        HashMap<Subjects, Integer> gradeHashMap = new HashMap<>();
+        HashMap<Integer, Integer> gradeHashMap = new HashMap<>();
 
         for(int i = 0; i < studentGradesInt.size(); i++)
-            gradeHashMap.put(Subjects.values()[i], studentGradesInt.get(i));
+            gradeHashMap.put(i, studentGradesInt.get(i));
 
         return new Student(studentMajor, gradeHashMap);
     }
@@ -43,12 +50,18 @@ public class InputUtil {
         } catch (IOException e){
             System.out.println("Could not read in contents");
         }
+
+        if(students.size() > 1)
+            ensureSameNumberOfGrades(students);
+
         return students;
     }
 
     public static List<Student> listToStudentList(List<String> studentStrings){
         List<Student> students = new ArrayList<>();
         studentStrings.forEach(studentString -> students.add(stringToStudent(studentString)));
+        if(students.size() > 1)
+            ensureSameNumberOfGrades(students);
         return students;
     }
 }
