@@ -15,8 +15,8 @@ public class PassingCalculator {
 
     public int numberOfStudentsPassed(List<Student> students){
         return  (int) students.stream()
-                .filter(student -> student.studentMajorGrade() >= student.studentDivision.divisionPassingGrade)
-                .filter(student -> student.studentTotalGrade() >= this.overallPassingGrade)
+                .filter(this::studentPassed)
                 .count();
+
     }
 }
