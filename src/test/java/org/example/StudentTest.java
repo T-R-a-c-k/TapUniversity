@@ -26,7 +26,7 @@ public class StudentTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void studentAbbreviationIsInDivisions(){
+    public void studentAbbreviationIsNotInDivisions(){
         String fake_abbreviation = "something that surely wont work";
         List<Integer> grades = new ArrayList<>(
                 Arrays.asList(1,2,3,4,5)
@@ -40,7 +40,7 @@ public class StudentTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void studentGradesAreSameLength(){
+    public void studentGradesAreNotSameLengthAsSubjects(){
         String abbreviation = Division.Science.divisionAbbreviation;
         List<Integer> bad_grades = new ArrayList<>(
                 Arrays.asList(1,2,3)
