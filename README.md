@@ -1,4 +1,4 @@
-##Tap University Test Solution
+## Tap University Test Solution
 
 This MD aims to highlight my thought process in regards to the test case provided from Tap. 
 
