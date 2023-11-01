@@ -115,4 +115,25 @@ public class PassingCalculatorTest {
         List<Student> students = InputUtil.listToStudentList(values);
         assert passingCalculator.numberOfStudentsPassed(students) == 2;
     }
+
+    @Test
+    public void twoStudentOfTenPasses_usesDifferentScoring(){
+        overallPassingGrade = 1200;
+        passingCalculator = new PassingCalculator(overallPassingGrade);
+
+        List<String> values = new ArrayList<>();
+        values.add("s 70 78 82 57 74 69 83 91 56 65 73 77 88 90 85");
+        values.add("l 68 81 81 60 78 63 76 74 71 75 80 79 72 69 85");
+        values.add("s 63 76 55 80 75 72 68 62 79 74 80 61 90 84 77");
+        values.add("s 90 100 96 10 10 45 78 86 72 89 96 81 95 75 60");
+        values.add("l 88 78 81 97 93 76 81 75 62 64 80 88 91 94 87");
+        values.add("s 70 78 82 57 74 69 83 91 56 65 73 77 88 90 85");
+        values.add("l 68 81 81 60 78 63 76 74 71 75 80 79 72 69 85");
+        values.add("s 63 76 55 80 75 72 68 62 79 74 80 61 90 84 77");
+        values.add("s 90 100 96 10 10 45 78 86 72 89 96 81 95 75 60");
+        values.add("l 88 78 81 97 93 76 81 75 62 64 80 88 91 94 87");
+
+        List<Student> students = InputUtil.listToStudentList(values);
+        assert passingCalculator.numberOfStudentsPassed(students) == 2;
+    }
 }
